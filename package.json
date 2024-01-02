@@ -5,11 +5,13 @@
   "main": "index.js",
   "type": "module",
   "preferGlobal": true,
-  "bin": "./commands.js",
+  "bin": {
+    "customer-cli": "commands.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jeric Realubit",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.1.0",
