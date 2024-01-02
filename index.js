@@ -5,15 +5,13 @@ import Customer from "./models/customer.js";
 mongoose.Promise = global.Promise;
 
 // connect to db
-const db = mongoose.connect("mongodb://localhost:27017/customercli", {
-  useMongoClient: true,
-});
+mongoose.connect("mongodb://localhost:27017/customercli");
 
 // Add customer
 const addCustomer = (customer) => {
   Customer.create(customer).then((customer) => {
     console.info("New Customer added successfully");
-    db.close();
+    mongoose.connection.close();
   });
 };
 
@@ -25,10 +23,9 @@ const findCustomer = (name) => {
     (customer) => {
       console.info(customer);
       console.info(`${customer.length} matches`);
-      db.close();
+      mongoose.connection.close();
     }
   );
 };
 
-//export { addCustomer, findCustomer };
-module.exports = { addCustomer, findCustomer };
+export { addCustomer, findCustomer };

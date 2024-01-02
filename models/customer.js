@@ -9,8 +9,5 @@ const customerSchema = mongoose.Schema({
   email: { type: String },
 });
 
-// export default mongoose.models.Customer ||
-// mongoose.model("Customer", customerSchema);
-
-// Define and export
-module.exports = mongoose.model("Customer", customerSchema);
+export default mongoose.models.Customer ||
+  mongoose.model("Customer", customerSchema);
