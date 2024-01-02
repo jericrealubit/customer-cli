@@ -28,4 +28,35 @@ const findCustomer = (name) => {
   );
 };
 
-export { addCustomer, findCustomer };
+// Update customer
+const updateCustomer = (_id, customer) => {
+  Customer.updateMany({ _id }, customer).then((customer) => {
+    console.info("Updated customer successfully");
+    mongoose.connection.close();
+  });
+};
+
+// Remove customer
+const removeCustomer = (_id) => {
+  Customer.deleteOne({ _id }).then((customer) => {
+    console.info("Removed customer successfully");
+    mongoose.connection.close();
+  });
+};
+
+// List Customer
+const listCustomer = () => {
+  Customer.find().then((customers) => {
+    console.info(customers);
+    console.info(`${customers.length} customers`);
+    mongoose.connection.close();
+  });
+};
+
+export {
+  addCustomer,
+  findCustomer,
+  updateCustomer,
+  removeCustomer,
+  listCustomer,
+};
